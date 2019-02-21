@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Aula 01</title>
+		<script>
+			function calcularSoma() {
+				var p1 = document.getElementById("oper01").value;
+                var p2 = document.getElementById("oper02").value;
+                var res = parseFloat(p1) + parseFloat(p2);
+				alert("Resultado : " + res);
+            }
+            
+            function calcularSubtracao() {
+				var p1 = document.getElementById("oper01").value;
+                var p2 = document.getElementById("oper02").value;
+                var res = parseFloat(p1) - parseFloat(p2);
+				alert("Resultado : " + res);
+            }
+            
+            // TODO - Implementar as outras operações aritméticas: * (multiplicação) / (divisão) % (resto da divisão) ** (exponenciação)
+		</script>
+	</head>
+	<body>
+        <h1> Calculadora </h1>
+		<p>
+            Digite primeiro valor:
+            <input type="text" id="oper01" />		
+        </p>
+        <p>
+            Digite o segundo valor:
+            <input type="text" id="oper02" />		
+        </p>
+        <p>
+            <button onclick="calcularSoma()">Soma</button>
+            <button onclick="calcularSubtracao()">Subtracao</button>
+        </p>
+	</body>
+</html>
