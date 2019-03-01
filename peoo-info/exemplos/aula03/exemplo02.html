@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Par ou Ímpar?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script> 
+        function ehPar(){
+            var _valor = document.getElementById("valor").value;
+            var valor = Number.parseInt(_valor);
+
+            if(valor != _valor){
+                resultado.innerHTML = "O valor fornecido não é inteiro!";
+            }else if(valor%2==0){
+                resultado.innerHTML = "O número " + valor + " é par!";
+            }else{
+                resultado.innerHTML = "O número " + valor + " é ímpar!";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Par ou Ímpar</h1>
+
+    <p>
+        Digite um valor
+        <input type="text" id="valor"/>
+        <button onclick="ehPar()">Verificar</button>
+    </p>
+    <p id="resultado" />
+</body>
+</html>

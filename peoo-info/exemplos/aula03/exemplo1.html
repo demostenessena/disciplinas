@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Validação da senha</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script> 
+        function validarSenha(){
+            var senha = document.getElementById("senha").value;
+            var resultado = document.getElementById("resultado");
+
+            if(senha=="1234"){
+                resultado.innerHTML = "Senha Válida!";
+            }else{
+                resultado.innerHTML = "Senha Inválida!";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Validação da senha</h1>
+
+    <p>
+        Digite a senha
+        <input type="text" id="senha"/>
+        <button onclick="validarSenha()">Validar</button>
+    </p>
+    <p id="resultado" />
+</body>
+</html>
