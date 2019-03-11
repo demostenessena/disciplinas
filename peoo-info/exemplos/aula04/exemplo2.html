@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Imprimir os números 1 a 10</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script> 
+        function imprimirPares(){
+            var resultado = document.getElementById("resultado");
+            var conteudo = "<ol>";
+
+            for(var i=2;i<=20;i+=2){
+             conteudo += "<li>" + i + "</li>";
+            }
+
+         conteudo += "</ol>";
+
+            resultado.innerHTML = conteudo;
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Imprimir os números entre 1 e 10</h1>
+
+    <p>
+        Clique para imprimir
+        <button onclick="imprimirPares()">Imprimir</button>
+    </p>
+    <p id="resultado" />
+</body>
+</html>
