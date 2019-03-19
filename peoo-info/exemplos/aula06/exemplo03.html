@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Imprimir os números</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script> 
+        function imprimirDecrescente(inicial, final){
+            var resultado = document.getElementById("resultado");
+            var conteudo = "";
+
+            if(inicial < final){
+                conteudo = "O valor inicial deve ser maior do que o valor final.";
+            }else {
+                for(var i=inicial;i>=final;i--){
+                    conteudo += "<li>" + i + "</li>";
+                }
+            }
+
+             resultado.innerHTML = conteudo;
+        }
+
+        function imprimirCrescente(inicial, final){
+            var resultado = document.getElementById("resultado");
+            var conteudo = "";
+
+            if(inicial > final){
+                conteudo = "O valor inicial deve ser menor do que o valor final.";
+            }else {
+                for(var i=inicial;i<=final;i++){
+                    conteudo += "<li>" + i + "</li>";
+                }
+            }
+
+             resultado.innerHTML = conteudo;
+        }
+
+        function imprimirNumeros(){
+            var inicial = parseInt(document.getElementById("inicial").value);
+            var final = parseInt(document.getElementById("final").value);
+
+            if(inicial <= final){
+                imprimirCrescente(inicial,final);
+            }else {
+                imprimirDecrescente(inicial,final);
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Imprimir os números</h1>
+
+    <p>
+        Insira o valor inicial
+        <input type="text" id="inicial" />
+    </p>
+    <p>
+        Insira o valor final
+        <input type="text" id="final" />
+    </p>
+        <button onclick="imprimirNumeros()">Imprimir</button>
+    <ul id="resultado">
+    </ul>
+
+</body>
+</html>
