@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Imprimir os números</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script> 
+        function imprimirNumeros(){
+            var resultado = document.getElementById("resultado");
+            var inicial = parseInt(document.getElementById("inicial").value);
+            var conteudo = "";
+
+            for(var i=inicial;i>=1;i--){
+                conteudo += "<li>" + i + "</li>";
+            }
+
+             resultado.innerHTML = conteudo;
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Imprimir os números</h1>
+
+    <p>
+        Insira o valor inicial
+        <input type="text" id="inicial" />
+        <button onclick="imprimirNumeros()">Imprimir</button>
+    </p>
+    <ul id="resultado">
+
+    </ul>
+</body>
+</html>
