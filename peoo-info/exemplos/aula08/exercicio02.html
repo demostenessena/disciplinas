@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script>
+      function converterC2F(){
+        var temperatura = parseFloat(document.getElementById("temperatura").value);
+
+        var resultado = 9.0/5.0 * temperatura + 32;
+
+        document.getElementById("resultado").innerHTML = resultado.toFixed(2);
+        document.getElementById("escala").innerHTML = "Fahrenheit";  
+      }
+
+      function converterF2C(){
+        var temperatura = parseFloat(document.getElementById("temperatura").value);
+
+        var resultado = 5.0/9.0 * (temperatura - 32);
+
+        document.getElementById("resultado").innerHTML = resultado.toFixed(2);
+        document.getElementById("escala").innerHTML = "Celsius";  
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Conversão entre escalas de temperatura</h1>
+    <p>
+      Qual é a temperatura (C ou F)?
+      <input id="temperatura" type="text" / >
+    </p>
+      <button onclick="converterC2F()">Converter para Fahrenheit</button>
+      <button onclick="converterF2C()">Converter para Celsius</button>
+    <p>
+      A temperatura em <span id="resultado">_________</span> <sup>o</sup> <span id="escala">_______</span>
+    </p>
+  </body>
+</html>

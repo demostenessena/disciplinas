@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script>
+      function calcularSalario(){
+        var salario = parseFloat(document.getElementById("salario").value);
+        var novosalario;
+
+        if(salario > 1250){
+          reajuste = 10;
+        }else{
+          reajuste = 15;
+        }
+        novosalario = salario + salario * reajuste/100;  
+
+        document.getElementById("novosalario").innerHTML = novosalario.toFixed(2);
+        document.getElementById("reajuste").innerHTML = reajuste;  
+      }
+
+    </script>
+  </head>
+  <body>
+    <h1>Reajuste Salarial</h1>
+    <p>
+      Qual é o atual salário (R$)?
+      <input id="salario" type="text" / >
+      <button onclick="calcularSalario()">Calcular Novo Salário</button>
+    </p>
+      <p>
+        O reajuste foi de <span id="reajuste">_________</span>%.
+    </p>
+    <p>
+        O novo salário é R$ <span id="novosalario">_________</span>.
+    </p>
+  </body>
+</html>

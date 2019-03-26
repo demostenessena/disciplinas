@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script>
+      function calcular(){
+        var raio = parseFloat(document.getElementById("raio").value);
+
+        var volume = 4.0/3.0*3.1415*raio**3;
+
+        document.getElementById("resultado").innerHTML = volume.toFixed(2);        
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Calcula o volume de uma esfera</h1>
+    <p>
+      Qual é o raio da esfera (cm)?
+      <input id="raio" type="text" / >
+      <button onclick="calcular()">Calcular</button>
+    </p>
+    <p>
+      O volume é <span id="resultado">_________</span> cm<sup>3</sup>
+    </p>
+  </body>
+</html>

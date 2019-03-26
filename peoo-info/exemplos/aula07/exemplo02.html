@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Calcula a média</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script> 
+        function calculaMedia(){
+            var nota01 = parseFloat(document.getElementById("nota01").value);
+            var nota02 = parseFloat(document.getElementById("nota02").value);
+            var nota03 = parseFloat(document.getElementById("nota03").value);
+            var nota04 = parseFloat(document.getElementById("nota04").value);
+
+            var media = (nota01 + nota02 + nota03 + nota04) / 4.0;
+            
+            document.getElementById("media").innerHTML = media.toFixed(1);
+
+            if(media >= 6){
+                document.getElementById("status").innerHTML = "APROVADO!";
+            }else{
+                document.getElementById("status").innerHTML = "REPROVADO!";
+            }
+        }
+
+    </script>
+</head>
+<body>
+    
+    <h1>Calcula a Média</h1>
+        <p> </p>Digite a primeira nota: <input type="text" id="nota01" /> </p>
+        <p> </p>Digite a primeira nota: <input type="text" id="nota02" /> </p>
+        <p> </p>Digite a primeira nota: <input type="text" id="nota03" /> </p>
+        <p> </p>Digite a primeira nota: <input type="text" id="nota04" /> </p>
+
+        <button onclick="calculaMedia()">Calcula a média</button>
+        <p>A média é <span id="media"></span></p>
+        <p>O aluno foi <span id="status"></span></p>
+    <ul id="resultado">
+    </ul>
+
+</body>
+</html>

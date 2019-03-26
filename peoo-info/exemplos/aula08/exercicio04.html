@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script>
+      function calcular(){
+        var anoNasc = parseInt(document.getElementById("anoNasc").value);
+        var data = new Date;
+        var anoAtual = data.getFullYear();
+
+        if(anoAtual < anoNasc){
+          document.getElementById("msg").innerHTML = "Idade inválida!";
+          document.getElementById("resultado").innerHTML = "____";
+        }else {
+          document.getElementById("msg").innerHTML = "";
+          document.getElementById("resultado").innerHTML = (anoAtual - anoNasc);
+        }        
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Calcula a idade</h1>
+    <p>
+      Qual é o teu ano de nascimento?
+      <input id="anoNasc" type="text" / >
+      <button onclick="calcular()">Calcular</button>
+      <span id="msg"></span>
+    </p>
+    <p>
+      Você tem <span id="resultado">____</span> anos!
+    </p>
+  </body>
+</html>
