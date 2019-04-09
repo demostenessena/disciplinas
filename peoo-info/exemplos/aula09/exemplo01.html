@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Disciplinas</title>
+    <script>
+      var disciplinas = [];
+
+      function atualizarTabela(){
+        var resultado = "";
+
+        for(i=0;i<disciplinas.length;i++){
+          var cnome = "<td>" + disciplinas[i] + "</td>";
+          var cremover = "<td><button onclick='remover(" + i + ")'>&#10007;</button> </td>";
+          var catualizar = "<td><button onclick='atualizar(" + i + ")'>&#10000;</button> </td>";
+          var cup = "<td><button onclick='subir(" + i + ")'>&uarr;</button> </td>";
+          var cdown = "<td><button onclick='descer(" + i + ")'>&darr;</button> </td>";
+
+          resultado += "<tr>" + cnome + cremover + catualizar + cup + cdown + "</tr>";
+        }
+        document.getElementById("listaDisciplinas").innerHTML = resultado;
+        document.getElementById("msg").innerHTML = "";
+      }
+
+      function existe(disciplina){
+        for(i=0;i<disciplinas.length;i++){
+          if(disciplina == disciplinas[i]){
+            return true;
+          }
+        }
+        return false;
+      }
+
+      function atualizar(posicao){
+        var disciplina = document.getElementById("disciplina").value;
+
+        if(existe(disciplina)){
+          document.getElementById("msg").innerHTML = "A disciplina já existe na lista.";
+        }else{
+          disciplinas[posicao] = disciplina;
+          atualizarTabela();
+        }
+      }
+
+      function remover(posicao){
+        disciplinas.splice(posicao,1);
+        atualizarTabela();
+      }
+
+      function adicionar(){
+        var disciplina = document.getElementById("disciplina").value;
+
+        if(existe(disciplina)){
+          document.getElementById("msg").innerHTML = "A disciplina já existe na lista.";
+        }else{
+          disciplinas[disciplinas.length] = disciplina;
+          atualizarTabela();
+        }
+      }
+
+      function ordenar(){
+        disciplinas.sort();
+        atualizarTabela();
+      }
+
+      function subir(posicao){
+        if(posicao > 0 && disciplinas.length > 1){
+          var aux = disciplinas[posicao-1];
+          disciplinas[posicao-1] = disciplinas[posicao];
+          disciplinas[posicao] = aux;
+          atualizarTabela();
+        }
+      }
+
+      function descer(posicao){
+        if(posicao < disciplinas.length-1 && disciplinas.length > 1){
+          var aux = disciplinas[posicao+1];
+          disciplinas[posicao+1] = disciplinas[posicao];
+          disciplinas[posicao] = aux;
+          atualizarTabela();
+        }
+      }
+
+    </script>
+  </head>
+  <body>
+    <h1>Disciplinas</h1>
+    <table id="listaDisciplinas">
+    </table>
+    <p>
+      Adicionar disciplina:
+      <input type="text" id="disciplina" />
+      <button onclick="adicionar()">Adicionar</button>
+      <button onclick="ordenar()">Ordenar</button>
+      <spam id="msg"></spam>
+  </p>
+  </body>
+</html>
