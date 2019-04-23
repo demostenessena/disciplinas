@@ -6,6 +6,17 @@
     <title>Números da Sorte</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
+        // associando o 'enter' no 'input'.
+        function inicializar(){            
+            var input = document.getElementById("numero");
+            input.addEventListener("keyup",function(event){
+                if(event.keyCode === 13){
+                    event.preventDefault();
+                    document.getElementById("adicionarBtn").click();
+                }
+            });
+        }
+
         var numeros = [];
 
         function calcularSoma(){
@@ -28,14 +39,13 @@
         }
 
         function removerNumero(posicao){
-            //delete numeros[posicao];
             numeros.splice(posicao,1);
             calcularSoma();
         }
 
     </script>
 </head>
-<body>
+<body onload="inicializar()">
     
     <h1>Números da Sorte</h1>
     
@@ -43,7 +53,7 @@
         </ul>
     
         <input type="text" id="numero" />
-        <button onclick="adicionarNumero()">Adicionar</button>
+        <button id="adicionarBtn" onclick="adicionarNumero()">Adicionar</button>
         <span id="msg"></span>
         <h4>A soma dos números é : <span id="soma"></span></h4>
 </body>
