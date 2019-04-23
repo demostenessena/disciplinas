@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Números da Sorte</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        var numeros = [];
+
+        function calcularSoma(){
+            var soma = 0;
+            var resNumeros = "";
+
+            for(i=0;i<numeros.length;i++){
+                var remover = "<button onclick='removerNumero( " + i + "  )'>remover</button>";
+                resNumeros += "<li>" + numeros[i] + remover +  "</li>";
+                soma += numeros[i];
+            }
+            document.getElementById("resultado").innerHTML = resNumeros;
+            document.getElementById("soma").innerHTML = soma;
+            document.getElementById("numero").value = "";
+        }
+
+        function adicionarNumero(){
+            numeros.push(parseInt(document.getElementById("numero").value));
+            calcularSoma();
+        }
+
+        function removerNumero(posicao){
+            //delete numeros[posicao];
+            numeros.splice(posicao,1);
+            calcularSoma();
+        }
+
+    </script>
+</head>
+<body>
+    
+    <h1>Números da Sorte</h1>
+    
+        <ul id="resultado">
+        </ul>
+    
+        <input type="text" id="numero" />
+        <button onclick="adicionarNumero()">Adicionar</button>
+        <span id="msg"></span>
+        <h4>A soma dos números é : <span id="soma"></span></h4>
+</body>
+</html>

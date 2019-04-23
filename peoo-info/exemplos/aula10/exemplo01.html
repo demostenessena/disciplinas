@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Calcula a média</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        var disciplinas = [ 'PEOO','Autoria Web','Redes de Computadores','Manutenção','Informática Básica'];
+        function imprimirDisciplinas(){
+            var resultado = "";
+            for(i=0;i<disciplinas.length;i++){
+                resultado += "<li>" + disciplinas[i] + "</li>";
+            }
+
+            document.getElementById("resultado").innerHTML = resultado;
+        }
+
+    </script>
+</head>
+<body>
+    
+    <h1>Minhas Disciplinas Preferidas</h1>
+    
+        <ul id="resultado">
+        </ul>
+    
+        <button onclick="imprimirDisciplinas()">Imprimir Disciplinas</button>
+</body>
+</html>
