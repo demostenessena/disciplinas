@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Questão 02</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script>
+      function converter12horas(horas24){
+        var horas12;
+        if (horas24 >= 0 && horas24 <= 11){          
+          return horas24 + " a.m.";
+        }else if(horas24 > 12 && horas24 <= 23){
+          return (horas24 - 12) + " p.m."; 
+        }else if(horas24 == 12){ 
+          return "12 p.m.";
+        }
+      }
+
+      function listarHoras(){
+        var hora_inicial = parseInt(document.getElementById("hora_inicial").value);
+        var hora_final = parseInt(document.getElementById("hora_final").value);
+        var horas = "";
+
+        for(var i = hora_inicial; i<=hora_final; i++){
+          horas += "<li>" + converter12horas(i) + "</li>";
+        }
+        document.getElementById("horas").innerHTML = horas;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Listar horas</h1>
+    <p>
+      Informe a hora inicial
+      <input id="hora_inicial" type="text" />  <br />
+      Informe a hora final
+      <input id="hora_final" type="text" />
+      <br />
+      <button onclick="listarHoras()">Listar Horas</button> 
+      <span style="font-size: 8%; color: red" id="msg"></span> 
+    </p>
+    <h2> Horas</h2>
+    <ul id="horas">
+
+    </ul>
+  </body>
+</html>

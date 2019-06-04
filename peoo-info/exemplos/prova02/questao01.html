@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Questão 01</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script>
+      function converter12horas(){
+        var horas24 = parseInt(document.getElementById("hora").value);
+        var horas12;
+        var msg = "";
+        if (horas24 >= 0 && horas24 <= 11){
+          document.getElementById("entrada").innerHTML = horas24;
+          document.getElementById("saida").innerHTML = horas24 + " a.m.";
+        }else if(horas24 > 12 && horas24 <= 23){
+          document.getElementById("entrada").innerHTML = horas24;
+          document.getElementById("saida").innerHTML = (horas24 - 12) + " p.m."; 
+        }else if(horas24 == 12){ 
+          document.getElementById("entrada").innerHTML = horas24;
+          document.getElementById("saida").innerHTML = "12 p.m.";
+        }else {
+          msg = "Entrada inválida!";
+          document.getElementById("entrada").innerHTML = "___________";
+          document.getElementById("saida").innerHTML = "___________";
+        }
+        document.getElementById("msg").innerHTML = msg;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Conversão entre Ciclos de Horas</h1>
+    <p>
+      Informe a hora
+      <input id="hora" type="text" />
+      <button onclick="converter12horas()">Converter</button> 
+      <span style="font-size: 8%; color: red" id="msg"></span> 
+    </p>
+    <h4>
+      <span id="entrada">___________</span> horas corresponde à <span id="saida">_________</span>.
+    </h4>
+  </body>
+</html>

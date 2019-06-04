@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lista de Alunos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        td, th, table{
+            border-style: solid;
+            border-width: 1px;
+            border-color: black;
+            width: max-content
+        }
+    </style>
+
+    <script>
+        var alunos = [];
+
+        function getAluno(){
+            var nome = document.getElementById("nome").value;
+            var nota01 = parseInt(document.getElementById("nota01").value);
+            var nota02 = parseInt(document.getElementById("nota02").value);
+            var media = Math.floor((nota01*2 + nota02*3)/5);
+            var status = "Aprovado";
+
+            if(media < 60){
+                status = "Reprovado";
+            }
+
+            var aluno = {
+                    'nome' :nome,
+                    'nota01' :nota01,
+                    'nota02' :nota02,
+                    'media' :media,
+                    'status' :status};
+            return aluno;
+        }
+
+        function incluirAluno(){
+            var aluno = getAluno();
+
+            var achou = false;
+            for(var pos=0; pos<alunos.length;pos++){
+                if(alunos[pos].nome == aluno.nome){
+                    achou = true;
+                    break;
+                }
+            }
+
+            if(achou){
+                document.getElementById("msg").innerHTML = "Aluno existente!";
+            }else {
+                alunos.push(aluno);
+                limparCampos();
+                listarAlunos();
+            }
+        }
+
+        function limparCampos(){
+            document.getElementById("msg").innerHTML = "";
+            document.getElementById("nome").value = "";
+            document.getElementById("nota01").value = "";
+            document.getElementById("nota02").value = "";
+        }
+
+        function editarAluno(nome){
+            var aluno = getAluno();
+
+            for(var pos = 0; pos<alunos.length;pos++){
+                if(alunos[pos].nome == nome){
+                    alunos[pos] = aluno;
+                    break;
+                }
+            }
+            limparCampos();
+            listarAlunos();
+        }
+
+        function exibirNome(aluno){
+            alert(aluno.nome);
+        }
+
+        var conteudo = "";
+        function listarAlunos(){
+            var cabecalho = "<th>Nome</th><th>Nota 01</th><th>Nota 02</th>" +
+                            "<th>Média</th><th>Status</th><th>Ações</th>";
+            conteudo = "";
+
+            alunos.forEach(exibirConteudo);
+            document.getElementById("lista_alunos").innerHTML = cabecalho + conteudo;
+        }
+
+        function exibirConteudo(aluno){
+                conteudo += "<tr>" + 
+                    "<td>"+ aluno.nome + "</td>" +
+                    "<td>"+ aluno.nota01 + "</td>" +
+                    "<td>"+ aluno.nota02 + "</td>" +
+                    "<td>"+ aluno.media + "</td>" +
+                    "<td>"+ aluno.status + "</td>" +
+                    "<td><button onclick='excluirAluno(\""+aluno.nome+"\")'>&#10007;</button>"+
+                    "<button onclick='editarAluno(\""+aluno.nome+"\")'>&#10000;</button>" +
+                    "</td>"+
+                "</tr>";
+        }
+
+        function excluirAluno(nome){
+            for(var pos = 0; pos < alunos.length; pos++){
+                if(alunos[pos].nome == nome){
+                    alunos.splice(pos,1);
+                    break;
+                }
+            }
+            listarAlunos();
+        }
+
+
+
+    </script>
+</head>
+<body >
+    
+    <h1>Listar de Alunos</h1>
+
+    Nome: <input type="text" id="nome" /> <br />
+    Nota 01: <input type="text" id="nota01" /> <br />
+    Nota 02: <input type="text" id="nota02" /> <br />
+    <button onclick="incluirAluno()">Incluir</button> 
+    <span id="msg" style="color:red; font-size:10pt"></span>
+    <br /> <br />
+
+    <h2>Alunos</h2>
+
+    <table id="lista_alunos">
+        
+    </table>
+    
+</body>
+</html>

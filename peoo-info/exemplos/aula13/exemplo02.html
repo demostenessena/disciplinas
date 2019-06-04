@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sequência de Fibonacci</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script>
+        var sequencia = [];
+
+        function fibonacci(pos, pos_final){
+            if(pos == 0 || pos == 1){
+                sequencia.push(1);
+            }else {
+                sequencia.push(sequencia[pos-1] + sequencia[pos-2]);
+            }
+
+            if(pos < pos_final){
+                fibonacci(pos+1,pos_final);
+            }
+        }
+
+        function imprimirFibonacci(){
+            sequencia = [];
+            var num = parseInt(document.getElementById("numero").value);
+            fibonacci(0,num-1);
+            var conteudo = "";
+            for(var pos=0;pos<sequencia.length;pos++){
+                conteudo += "<li>" + sequencia[pos] + "</li>";
+            }
+            document.getElementById("sequencia").innerHTML = conteudo;
+        }
+        
+    </script>
+</head>
+<body >
+    <h1>Exibir a sequência de Fibonacci</h1>
+    
+    Qual é o valor? <input type="text" id="numero" /> 
+    <button onclick="imprimirFibonacci()">Calcular</button>
+    <br />
+    A sequência é
+    <ul id="sequencia">
+
+    </ul>
+</body>
+</html>
